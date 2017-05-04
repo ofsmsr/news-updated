@@ -8,7 +8,7 @@ var response = {
 exports.sendResponse = function sendResponse(param) {
     var msg = param.module + ' ' + param.operation + ' Successfully';
     response.content = param.dbResponse,
-    response.message = msg;
+    response.message = !param.dbResponse ? 'No records found' : msg;
 
     if (param.err) {
         var strLimit = (param.operation === Common.OPERATIONS.READ) ? (param.operation.length -2) : (param.operation.length -1);
